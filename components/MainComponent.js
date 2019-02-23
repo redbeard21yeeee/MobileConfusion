@@ -19,11 +19,11 @@ const MenuNavigator = createStackNavigator({
                 color: "#fff"            
             }
         }
-    }
-);
+      }
+    ,
 
 
-  render() {
+  render() 
  
     return (
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
@@ -31,7 +31,7 @@ const MenuNavigator = createStackNavigator({
   </View>
     );
   }
-}
+
   
 const HomeNavigator = createStackNavigator({
   Home: { screen: Home }
