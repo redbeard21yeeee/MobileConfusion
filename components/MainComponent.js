@@ -3,7 +3,7 @@ import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import { View, Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 const HomeNavigator = createStackNavigator({
   Home: { screen: Home }
@@ -18,6 +18,23 @@ const HomeNavigator = createStackNavigator({
     }
   }
 });
+
+const MenuNavigator = createStackNavigator({
+  Menu: { screen: Menu },
+  DishDetail: { screen: DishDetail }
+}, {
+  initialRouteName: 'Menu',
+  navigationOptions: {
+      headerStyle: {
+          backgroundColor: "#512DA8"
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+          color: "#fff"            
+      }
+  }
+}
+);
 
 const MainNavigator = createDrawerNavigator({
   Home: {

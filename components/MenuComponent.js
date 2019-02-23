@@ -26,7 +26,7 @@ class Menu extends Component {
                 key={index}
                 title={item.name}
                 subtitle={item.description}
-                onPress={() => props.onPress(item.id)}
+                onPress={() => navigate('DishDetail', { dishId: item.id })}
                 leftAvatar={{ source: require('./images/uthappizza.png')}}
               />
             );
