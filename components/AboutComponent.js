@@ -45,7 +45,7 @@ render() {
     return (
     <ScrollView>
         <History />
-        <Card>
+        <Card title="Corporate Leadership">
         <FlatList 
             data={this.state.leaders}
             renderItem={renderLeaderItem}
