@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-native-datepicker'
-import { Text, View, StyleSheet, ScrollView, Picker, Switch, Button, Modal } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Picker, Switch, Button, Modal, Alert } from 'react-native';
+import DatePicker from 'react-native-datepicker';   
+import * as Animatable from 'react-native-animatable';
+
+
+
 
 class Reservation extends Component {
 
@@ -23,11 +27,30 @@ class Reservation extends Component {
         this.setState({showModal: !this.state.showModal});
     }
 
-    handleReservation() {
-        console.log(JSON.stringify(this.state));
-        this.toggleModal();
-    }
 
+    handleReservation() {
+        Alert.alert(
+            'Your Reservation ok?',
+            'Number of guest: ' + this.state.guests + '\nSmoking?: ' + this.state.smoking + '\nDate and Time: ' + this.state.date,
+            [
+              {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+              {
+                text: 'Cancel',
+                onPress: () => this.resetForm(),
+                style: 'cancel',
+              },
+              {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            {cancelable: false},
+          );
+        console.log(JSON.stringify(this.state));
+        // this.setState({
+        //     guests: 1,
+        //     smoking: false,
+        //     date: ''
+        // });
+    }
+    
     resetForm() {
         this.setState({
             guests: 1,
@@ -36,10 +59,11 @@ class Reservation extends Component {
             showModal: false
         });
     }
-    
+
     render() {
         return(
-            <ScrollView>
+            <Animatable.View animation="zoomIn" duration={2000} delay={1000}>
+
                 <View style={styles.formRow}>
                 <Text style={styles.formLabel}>Number of Guests</Text>
                 <Picker
@@ -113,8 +137,8 @@ class Reservation extends Component {
                             />
                     </View>
                 </Modal>
-            </ScrollView>
-        );
+            </Animatable.View>
+            );
     }
 
 };
@@ -133,7 +157,23 @@ const styles = StyleSheet.create({
     },
     formItem: {
         flex: 1
-    }
+    },
+    modal: {
+        justifyContent: 'center',
+        margin: 20
+     },
+     modalTitle: {
+         fontSize: 24,
+         fontWeight: 'bold',
+         backgroundColor: '#512DA8',
+         textAlign: 'center',
+         color: 'white',
+         marginBottom: 20
+     },
+     modalText: {
+         fontSize: 18,
+         margin: 10
+     }
 });
 
 export default Reservation;

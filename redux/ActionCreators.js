@@ -26,30 +26,6 @@ export const commentsFailed = (errmess) => ({
     payload: errmess
 });
 
-export const postFavorite = (dishId)  => (dispatch) => {
-
-    setTimeout(() => {
-        dispatch(addFavorite(dishId));
-    }, 2000);
-};
-
-export const postComment = (dishId)  => (dispatch) => {
-
-    setTimeout(() => {
-        dispatch(addComment(dishId));
-    }, 2000);
-};
-
-export const addComment = (dishId) => ({
-    type: ActionTypes.ADD_COMMENT,
-    payload: dishId
-});
-
-export const addFavorite = (dishId) => ({
-    type: ActionTypes.ADD_FAVORITE,
-    payload: dishId
-});
-
 export const addComments = (comments) => ({
     type: ActionTypes.ADD_COMMENTS,
     payload: comments
@@ -164,4 +140,35 @@ export const leadersFailed = (errmess) => ({
 export const addLeaders = (leaders) => ({
     type: ActionTypes.ADD_LEADERS,
     payload: leaders
+});
+
+export const postFavorite = (dishId)  => (dispatch) => {
+
+    setTimeout(() => {
+        dispatch(addFavorite(dishId));
+    }, 2000);
+};
+
+
+export const addFavorite = (dishId) => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: dishId
+});
+
+export const postComment = (dishId, rating, author, comment)  => (dispatch) => {
+
+    setTimeout(() => {
+        dispatch(addComment(dishId, rating, author, comment));
+    }, 2000);
+};
+
+
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment
+});
+
+export const deleteFavorite = (dishId) => ({
+    type: ActionTypes.DELETE_FAVORITE,
+    payload: dishId
 });
